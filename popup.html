@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR-Link Pro</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- タブメニュー -->
+    <div class="tab-menu">
+      <button class="tab-button active" data-tab="generate">生成</button>
+      <button class="tab-button" data-tab="scan">読取</button>
+    </div>
+
+    <!-- タブ1: QRコード生成 -->
+    <div class="tab-content active" id="generate-tab">
+      <div class="qr-display">
+        <canvas id="qr-canvas"></canvas>
+      </div>
+      <div class="input-group">
+        <label for="url-input">URL / テキスト:</label>
+        <textarea id="url-input" rows="3" placeholder="URLまたはテキストを入力..."></textarea>
+      </div>
+      <div class="button-group">
+        <button id="download-btn" class="primary-btn">ダウンロード</button>
+      </div>
+    </div>
+
+    <!-- タブ2: QRコード読取 -->
+    <div class="tab-content" id="scan-tab">
+      <div class="drop-zone" id="drop-zone">
+        <div class="drop-zone-content">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+          <p>画像をドロップ または Ctrl+V で貼り付け</p>
+          <button id="select-file-btn" class="secondary-btn">ファイルを選択</button>
+          <input type="file" id="file-input" accept="image/*" style="display: none;">
+        </div>
+        <canvas id="scan-canvas" style="display: none;"></canvas>
+      </div>
+      <div class="result-section" id="result-section" style="display: none;">
+        <label>読み取り結果:</label>
+        <textarea id="result-text" rows="4" readonly></textarea>
+        <button id="copy-btn" class="primary-btn">クリップボードにコピー</button>
+        <button id="reset-btn" class="secondary-btn">リセット</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ライブラリ -->
+  <script src="lib/qrcode-generator.min.js"></script>
+  <script src="lib/jsQR.js"></script>
+  <!-- メインスクリプト -->
+  <script src="popup.js"></script>
+</body>
+</html>

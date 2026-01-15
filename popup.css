@@ -1,0 +1,263 @@
+/* カラー変数 - ライトモード */
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --bg-hover: #e0e0e0;
+  --text-primary: #212121;
+  --text-secondary: #757575;
+  --border-color: #e0e0e0;
+  --accent-color: #2196f3;
+  --accent-hover: #1976d2;
+  --success-color: #4caf50;
+  --canvas-bg: #ffffff;
+}
+
+/* ダークモード */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #1e1e1e;
+    --bg-secondary: #2d2d2d;
+    --bg-hover: #3d3d3d;
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --border-color: #3d3d3d;
+    --accent-color: #42a5f5;
+    --accent-hover: #2196f3;
+    --success-color: #66bb6a;
+    --canvas-bg: #ffffff;
+  }
+}
+
+/* リセット */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  width: 350px;
+  min-height: 450px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* タブメニュー */
+.tab-menu {
+  display: flex;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.tab-button {
+  flex: 1;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-bottom: 2px solid transparent;
+}
+
+.tab-button:hover {
+  background-color: var(--bg-hover);
+}
+
+.tab-button.active {
+  color: var(--accent-color);
+  border-bottom-color: var(--accent-color);
+}
+
+/* タブコンテンツ */
+.tab-content {
+  display: none;
+  padding: 20px;
+  flex: 1;
+}
+
+.tab-content.active {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* QRコード表示エリア */
+.qr-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--bg-secondary);
+  border-radius: 8px;
+  min-height: 220px;
+}
+
+#qr-canvas {
+  max-width: 100%;
+  height: auto;
+  background-color: var(--canvas-bg);
+  border-radius: 4px;
+}
+
+/* 入力グループ */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-group label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+textarea {
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 13px;
+  resize: vertical;
+  transition: border-color 0.2s;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+textarea[readonly] {
+  background-color: var(--bg-secondary);
+  cursor: default;
+}
+
+/* ボタン */
+.button-group {
+  display: flex;
+  gap: 8px;
+}
+
+button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.primary-btn {
+  background-color: var(--accent-color);
+  color: white;
+  flex: 1;
+}
+
+.primary-btn:hover {
+  background-color: var(--accent-hover);
+}
+
+.secondary-btn {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.secondary-btn:hover {
+  background-color: var(--bg-hover);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* ドロップゾーン */
+.drop-zone {
+  border: 2px dashed var(--border-color);
+  border-radius: 8px;
+  padding: 40px 20px;
+  text-align: center;
+  transition: all 0.2s;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.drop-zone.drag-over {
+  border-color: var(--accent-color);
+  background-color: var(--bg-secondary);
+}
+
+.drop-zone-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.drop-zone svg {
+  color: var(--text-secondary);
+}
+
+.drop-zone p {
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* 結果セクション */
+.result-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.result-section label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+#result-text {
+  background-color: var(--bg-secondary);
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+}
+
+/* スキャンキャンバス */
+#scan-canvas {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* アニメーション */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result-section {
+  animation: fadeIn 0.3s ease-out;
+}
